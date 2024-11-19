@@ -24,7 +24,7 @@ function LatestSidebar() {
         return keywords;
     }
     
-    useEffect(async () => {
+    useEffect(() => {
         //if no user logged in, pull article ids on chronic illnesses in general
         if (!profile.userId){
             dispatch(fetchLatest());
