@@ -33,6 +33,7 @@ function SignupForm({toggleSignupModal}) {
             ...fData,
             [name]: value
         }));
+        setErrorMessage({...errorMessage, form: ''});
     };
 
     const handleValidation = (event) => {

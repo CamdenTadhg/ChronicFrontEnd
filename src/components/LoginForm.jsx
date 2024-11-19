@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Button, Form, FormGroup, Label, Input, Col, FormFeedback} from 'reactstrap';
 import ChronicAPI from '../api/chronicAPI';
-import {useSelector} from 'react-redux';
 import {fetchUserProfile} from '../redux/thunks/profileThunks';
 import {fetchDaysTracking} from '../redux/thunks/trackingThunks';
-import {fetchLatest} from '../redux/thunks/latestThunks';
 
 function LoginForm({toggleLoginModal}) {
     const initialState = {
@@ -33,9 +31,8 @@ function LoginForm({toggleLoginModal}) {
             ...fData,
             [name]: value
         }));
+        setErrorMessage({...errorMessage, form: ''});
     };
-
-    //forces a reflow to fix delayed style application
 
     const handleValidation = (event) => {
         if (event.target.name === 'email'){
