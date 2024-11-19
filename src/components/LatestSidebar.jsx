@@ -25,16 +25,6 @@ function LatestSidebar() {
     }
     
     useEffect(async () => {
-        //check that the server is spun up
-        const readiness = await ChronicAPI.ready();
-        if (readiness.status === "ok" && readiness.delay > 5000) {
-            setLoadingMessage("Waking up server, please wait");
-        } else if (readiness.status === "error") {
-            setLoadingMessage("Server is currently unavailable. Please try again.");
-            return;
-        } else {
-            setLoadingMessage("Loading...");
-        }
         //if no user logged in, pull article ids on chronic illnesses in general
         if (!profile.userId){
             dispatch(fetchLatest());
